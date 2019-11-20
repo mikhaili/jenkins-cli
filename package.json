@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "users jenkins cli",
   "main": "./lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mikhaili/jenkins-cli.git"
+  },
   "scripts": {
     "start": "npm run build && npm run global",
     "dev": "npm run build &&  node lib/index.js",
