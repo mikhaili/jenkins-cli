@@ -1,5 +1,5 @@
 {
-  "name": "je-ci",
+  "name": "jeci",
   "version": "1.0.1",
   "description": "users jenkins cli",
   "main": "./lib/index.js",
