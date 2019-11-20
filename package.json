@@ -24,7 +24,7 @@
     "je-ci": "./bin/index.js"
   },
   "files": [
-    "/bin/index",
+    "/bin/**",
     "/lib/**"
   ],
   "keywords": [],
