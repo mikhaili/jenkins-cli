@@ -9,7 +9,8 @@ export interface Answer {
 export interface InitAnswer {
     user_name: string;
     user_password: string;
-    user_email: string
+    user_email: string;
+    jenkins_host: string;
 }
 
 export interface RouteAnswer {

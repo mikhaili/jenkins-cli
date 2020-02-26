@@ -15,9 +15,16 @@ const routeTable: Record<RouteChoiceValue, Function> = {
 const main = async () => {
     const initializationLogic = new InitializationLogic();
     let configuration: InitConfiguration = initializationLogic.loadConfig();
+
     if (!configuration.isValid) {
-        const {user_name, user_password, user_email} = await initializationQuestion();
-        configuration = create({name: user_name, password: user_password, email: user_email});
+        const {user_name, user_password, user_email, jenkins_host} = await initializationQuestion();
+        configuration = create({
+            name: user_name,
+            password: user_password,
+            email: user_email,
+            jenkins_host: jenkins_host
+        });
+
         initializationLogic.saveConfig(configuration)
     }
 
@@ -28,8 +35,9 @@ const main = async () => {
         token: 'yTUC8kMSej3zjFr7C7S2cvIfocVHixjc',
         user: configuration.name!!,
         password: configuration.password!!,
-        host: process.env.JENKINS_HOST!!,
+        host: configuration.jenkins_host || process.env.JENKINS_HOST!!,
     });
+
     jenkinsClient.logger = new Logger();
     jenkinsClient.run(answer, (message: string) => {
         console.log(message);

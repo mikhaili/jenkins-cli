@@ -1,12 +1,11 @@
-import inquirer from 'inquirer';
-
 import {InitAnswer} from '../models/choice';
+import inquirer from "inquirer";
 
 export async function initializationQuestion(): Promise<InitAnswer> {
     const validate = (title: string) => {
         return (val: string) => {
             if (val.length < 1) {
-                return 'You must provide user name';
+                return `Please provide ${title}`;
             }
 
             return true;
@@ -25,6 +24,11 @@ export async function initializationQuestion(): Promise<InitAnswer> {
             name: 'user_password',
             message: "What's your jenkins password",
             validate: validate('password')
+        }, {
+            type: 'input',
+            name: 'jenkins_host',
+            message: "What's your jenkins host name http://jenkins-ip:port",
+            validate: validate('jenkins host')
         }];
 
     return inquirer.prompt(question);
