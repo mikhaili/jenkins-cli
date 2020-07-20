@@ -11,9 +11,8 @@ export async function paramsQuestion(): Promise<Answer> {
             default: () => {
                 return -1
             },
-            validate: function(value: any) {
-                var valid = !isNaN(parseFloat(value));
-                return valid || 'Please enter a number';
+            validate: function (value: any) {
+                return !isNaN(parseFloat(value)) || 'Please enter a number';
             },
         },
         {
@@ -28,7 +27,7 @@ export async function paramsQuestion(): Promise<Answer> {
             default: () => {
                 return -1
             },
-            validate: function(value: any) {
+            validate: function (value: any) {
                 var valid = !isNaN(parseFloat(value));
                 return valid || 'Please enter a number';
             }

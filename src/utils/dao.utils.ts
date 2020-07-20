@@ -1,8 +1,8 @@
 import {Stats} from "fs";
 import {Logger} from "./logger.util";
+import * as findConfig from "find-config"
 
 const fs = require("fs");
-const {promisify} = require('util');
 
 export declare interface Configuration {
     readonly filename: string;
@@ -10,7 +10,7 @@ export declare interface Configuration {
 
 export class Dao {
     private readonly _fileName: string;
-    private _dir?: string;
+    private readonly _dir?: string;
     private _logger: Logger;
 
     constructor(props: {
@@ -47,12 +47,7 @@ export class Dao {
         });
     }
 
-    public loadData(): string | undefined {
-        const path = this._fileName;
-        if (fs.existsSync(path)) {
-            return fs.readFileSync(path, 'utf8')
-        }
-        return undefined;
+    public loadData(): string | null {
+        return findConfig.read(this._fileName);
     }
-
 }
