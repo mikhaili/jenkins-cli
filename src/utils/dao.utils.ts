@@ -40,7 +40,6 @@ export class Dao {
         const path = this._fileName;
         // write to a new file named 2pac.txt
         fs.writeFile(path, data, (err: any) => {
-            // throws an error, you could also catch it here
             if (err) throw err;
 
 //            this._logger.showSuccess('Config saved!');

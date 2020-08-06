@@ -19,6 +19,10 @@ export async function paramsQuestion(): Promise<Answer> {
             type: 'input',
             name: 'controllerBranchName',
             message: 'Controller branch name',
+            when: (answer: any) => {
+                return answer.controllerBN === -1
+            },
+
         },
         {
             type: 'input',
@@ -36,6 +40,10 @@ export async function paramsQuestion(): Promise<Answer> {
             type: 'input',
             name: 'branchNameAdUnit',
             message: 'Adunit branch name',
+            when: (answer: any) => {
+                return answer.adunitBN === -1
+            },
+
         },
         {
             type: 'input',
