@@ -18,6 +18,9 @@
     "tscov": "tscov --min-coverage 90",
     "tscov:d": "tscov --details",
     "publish-package": "npm run build && npm publish",
+    "tag": "git tag v$npm_package_version",
+    "postversion": "./scripts/post-version.sh",
+    "version:patch": "npm --no-git-tag-version version patch",
     "docs": "typedoc --out docs ./src"
   },
   "bin": {
